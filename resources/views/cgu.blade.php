@@ -119,4 +119,9 @@
     </article>
   </div>
 </section>
+
+<div class="steps-cta">
+    <p>Prêt à essayer BERRNI ?<br>Téléchargez l’application dès maintenant et envoyez votre colis en toute confiance !</p>
+    <a class="cta" href="#telecharger"><span class="icon">⬇</span><span>Télécharger l’application</span></a>
+</div>
 @endsection

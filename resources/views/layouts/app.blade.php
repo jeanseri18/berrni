@@ -17,7 +17,7 @@
         <div class="nav-wrap">
        
             <nav class="main-nav">
-                <a href="/" class="nav-link active">Accueil</a>
+                <a href="/" class="nav-link">Accueil</a>
                 <a href="/comment" class="nav-link">Comment ça marche</a>
                 <a href="/" class="nav-logo" aria-label="BERRNI">
                     <img src="{{ asset('Logo_BERRNI-removebg-preview.png') }}" alt="BERRNI" class="brand-logo brand-logo-inline">
@@ -46,5 +46,30 @@
             <span>Tous droits réservés.</span>
         </div>
     </footer>
+
+
+
+
+
+    <script>
+        // On récupère le chemin exact après le nom de domaine (ex: /contact)
+        // Si on est sur l'accueil, path sera juste "/"
+        const path = window.location.pathname;
+
+        // On sélectionne tous les liens de la navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(link => {
+            // On récupère l'attribut href du lien (ex: /faq)
+            const linkHref = link.getAttribute('href');
+
+            // On compare : si le chemin est identique au lien
+            if (path === linkHref) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
