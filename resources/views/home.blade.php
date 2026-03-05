@@ -8,7 +8,7 @@
         <p class="hero-sub" style="color:white !important;">Envoyez un colis. Quelqu’un de confiance le transporte.<br>
             Simplement. Humainement. Sécurisé.</p>
         <a class="cta" href="#telecharger">
-            <span class="icon">⬇</span>
+            <i class="bi bi-download icon" aria-hidden="true"></i>
             <span>Télécharger BERRNI</span>
         </a>
     </div>

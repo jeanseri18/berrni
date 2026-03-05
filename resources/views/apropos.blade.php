@@ -19,17 +19,23 @@
 
         <div class="about-grid">
             <article class="about-card">
-                <div class="about-icon" aria-hidden="true"><i class="bi bi-box2" aria-hidden="true"></i></div>
+                <div class="about-icon" aria-hidden="true">
+                    <img src="{{ asset('faq/colis.jpg') }}" alt="Expéditeur BERRNI" style="width: 88px; height: 88px; border-radius: 16px; object-fit: cover;">
+                </div>
                 <h3>Expéditeur</h3>
                 <p>Ceux qui veulent envoyer un colis sans stress.</p>
             </article>
             <article class="about-card">
-                <div class="about-icon" aria-hidden="true"><i class="bi bi-bicycle" aria-hidden="true"></i></div>
+                <div class="about-icon" aria-hidden="true">
+                    <img src="{{ asset('faq/livreumoto.jpg') }}" alt="Relais de confiance BERRNI" style="width: 88px; height: 88px; border-radius: 16px; object-fit: cover;">
+                </div>
                 <h3>Relais de confiance</h3>
                 <p>Ceux qui voyagent et qui souhaitent rendre service, <strong>en étant payé.</strong></p>
             </article>
             <article class="about-card">
-                <div class="about-icon" aria-hidden="true"><i class="bi bi-people-fill" aria-hidden="true"></i></div>
+                <div class="about-icon" aria-hidden="true">
+                    <img src="{{ asset('faq/community.jpg') }}" alt="Communauté locale BERRNI" style="width: 88px; height: 88px; border-radius: 16px; object-fit: cover;">
+                </div>
                 <h3>Communauté locale</h3>
                 <p>Où la confiance est essentielle.</p>
             </article>

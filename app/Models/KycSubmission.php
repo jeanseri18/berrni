@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class KycSubmission extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'id_card_front',
+        'id_card_back',
+        'selfie',
+        'selfie_with_id',
+        'transport_type',
+        'status',
+        'admin_notes',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+}

@@ -294,24 +294,24 @@
     <div class="faq-rules">
       <h2 class="section-title">Règles, chartes & sécurité</h2>
       <div class="rule-card-grid">
-        <a href="/cgu" class="rule-card">
-          <div class="rule-icon"><i class="bi bi-journal-text"></i></div>
+        <a href="{{ url('/cgu') }}" class="rule-card">
+          <div class="rule-icon"><img src="{{ asset('faq/2008.i301.001_personal_data_protection_gdpr_isometric_icons-04.jpg') }} " style="width: 70px;height: 70px;" alt="CGU BERRNI"></div>
           <div class="rule-content">
             <h3>CGU</h3>
             <p>Conditions d’utilisation de BERRNI.</p>
             <span class="rule-action">Consulter <i class="bi bi-arrow-right-short"></i></span>
           </div>
         </a>
-        <a href="/charte-expediteur" class="rule-card">
-          <div class="rule-icon"><i class="bi bi-box2"></i></div>
+        <a href="{{ url('/charte-expediteur') }}" class="rule-card">
+          <div class="rule-icon"><img src="{{ asset('faq/green-pencil-with-positive-questionnaire.jpg') }}" alt="Charte expéditeur" style="width: 70px;height: 70px;"></div>
           <div class="rule-content">
             <h3>Charte Expéditeur</h3>
             <p>Engagements et responsabilités de l’expéditeur.</p>
             <span class="rule-action">Consulter <i class="bi bi-arrow-right-short"></i></span>
           </div>
         </a>
-        <a href="/charte" class="rule-card">
-          <div class="rule-icon"><i class="bi bi-shield-check"></i></div>
+        <a href="{{ url('/charte') }}" class="rule-card">
+          <div class="rule-icon"><img src="{{ asset('faq/Sandy_Bus-36_Single-01.jpg') }}" alt="Charte relais de confiance" style="width: 70px;height: 70px;"></div>
           <div class="rule-content">
             <h3>Charte Relais de confiance</h3>
             <p>Règles et engagements des relais de confiance.</p>
@@ -332,4 +332,43 @@
         <a class="cta-btn" href="#" aria-label="Télécharger l’application">Télécharger l’application</a>
       </div>
     </section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const input = document.querySelector('.faq-search input');
+  if (!input) return;
+  const categories = Array.from(document.querySelectorAll('.faq-category'));
+  const itemsByCategory = categories.map(cat => ({
+    cat,
+    items: Array.from(cat.querySelectorAll('.faq-item'))
+  }));
+  const container = document.querySelector('.faq-container');
+  let noEl = document.getElementById('faq-no-results');
+  if (!noEl && container) {
+    noEl = document.createElement('p');
+    noEl.id = 'faq-no-results';
+    noEl.textContent = 'Aucun résultat';
+    noEl.style.display = 'none';
+    noEl.style.textAlign = 'center';
+    noEl.style.margin = '16px 0';
+    container.appendChild(noEl);
+  }
+  const filter = (q) => {
+    const query = q.trim().toLowerCase();
+    let any = false;
+    itemsByCategory.forEach(({cat, items}) => {
+      let catHas = false;
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        const match = query === '' || text.includes(query);
+        item.style.display = match ? '' : 'none';
+        if (match) { catHas = true; any = true; }
+      });
+      cat.style.display = catHas ? '' : 'none';
+      if (catHas && query) { cat.open = true; }
+    });
+    if (noEl) noEl.style.display = any ? 'none' : '';
+  };
+  input.addEventListener('input', (e) => filter(e.target.value));
+});
+</script>
 @endsection

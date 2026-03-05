@@ -17,17 +17,16 @@
         <div class="nav-wrap">
        
             <nav class="main-nav">
-                <a href="/" class="nav-link active">Accueil</a>
-                <a href="/comment" class="nav-link">Comment ça marche</a>
-                <a href="/" class="nav-logo" aria-label="BERRNI">
+                <a href="{{ url('/') }}" class="nav-link {{ url()->current() === url('/') ? 'active' : '' }}">Accueil</a>
+                <a href="{{ url('/comment') }}" class="nav-link {{ url()->current() === url('/comment') ? 'active' : '' }}">Comment ça marche</a>
                     <img src="{{ asset('Logo_BERRNI-removebg-preview.png') }}" alt="BERRNI" class="brand-logo brand-logo-inline">
                 </a>
-                <a href="/apropos" class="nav-link">À propos</a>
-                <a href="/faq" class="nav-link">FAQ</a>
-                <a href="/contact" class="nav-link">Contact</a>
-            </nav>
+                <a href="{{ url('/apropos') }}" class="nav-link {{ url()->current() === url('/apropos') ? 'active' : '' }}">À propos</a>
+                <a href="{{ url('/faqs') }}" class="nav-link {{ url()->current() === url('/faqs') ? 'active' : '' }}">FAQ</a>
+                <a href="{{ url('/contact') }}" class="nav-link {{ url()->current() === url('/contact') ? 'active' : '' }}">Contact</a>
         </div>
     </header>
+
 
     <main>
         @yield('content')
@@ -37,11 +36,11 @@
         <div class="footer-inner">
             <span>©{{ date('Y') }} BERRNI</span>
 
-            <a href="/cgu" class="footer-link">Conditions Générale d’Utilisation</a>
+            <a href="{{ url('/cgu') }}" class="footer-link">Conditions Générale d’Utilisation</a>
             <span class="sep">·</span>
-            <a href="/charte" class="footer-link">Charte du Relais</a>
+            <a href="{{ url('/charte') }}" class="footer-link">Charte du Relais</a>
             <span class="sep">·</span>
-            <a href="/charte-expediteur" class="footer-link">Charte de l’Expéditeur</a>
+            <a href="{{ url('/charte-expediteur') }}" class="footer-link">Charte de l’Expéditeur</a>
             <span class="sep">·</span>
             <span>Tous droits réservés.</span>
         </div>

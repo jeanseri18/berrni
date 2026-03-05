@@ -6,11 +6,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens; // Adding for API Auth
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +22,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'otp_code',
+        'is_verified',
+        'role',
+        'is_courier',
+        'courier_status',
     ];
 
     /**
@@ -31,6 +38,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'otp_code',
     ];
 
     /**
@@ -43,6 +51,33 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_verified' => 'boolean',
+            'is_courier' => 'boolean',
         ];
+    }
+
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class);
+    }
+
+    public function kycSubmissions()
+    {
+        return $this->hasMany(KycSubmission::class);
+    }
+
+    public function sentParcels()
+    {
+        return $this->hasMany(Parcel::class, 'sender_id');
+    }
+
+    public function deliveredParcels()
+    {
+        return $this->hasMany(Parcel::class, 'courier_id');
+    }
+
+    public function sosAlerts()
+    {
+        return $this->hasMany(SosAlert::class);
     }
 }

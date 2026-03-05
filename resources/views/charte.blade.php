@@ -115,4 +115,12 @@
     </article>
   </div>
 </section>
+
+    <section class="cta-banner">
+      <div class="cta-inner">
+        <h3 class="cta-title">Prêt à essayer BERRNI ?</h3>
+        <p>Téléchargez l’application dès maintenant et envoyez votre colis en toute confiance !</p>
+        <a class="cta-btn" href="#" aria-label="Télécharger l’application">Télécharger l’application</a>
+      </div>
+    </section>
 @endsection
